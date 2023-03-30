@@ -22,10 +22,43 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+    //Il Tank si muove e si gira
     PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
     PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 
 }
+
+// Called every frame
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+    if(PlayerControllerRef)
+    {
+        FHitResult HitResult;
+        PlayerControllerRef->GetHitResultUnderCursor(
+            ECollisionChannel::ECC_Visibility, 
+            false,
+            HitResult);
+        //Ruotiamo la torretta
+        RotateTurret(HitResult.ImpactPoint);
+
+    }
+
+
+}
+
+// Called when the game starts or when spawned
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+
+    PlayerControllerRef = Cast<APlayerController>(GetController());
+
+    
+	
+}
+
 
 void ATank::Move(float Value)
 {
