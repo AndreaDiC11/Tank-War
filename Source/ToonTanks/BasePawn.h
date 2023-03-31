@@ -19,6 +19,7 @@ public:
 protected:
 	//La torretta gira  inserendo la posizione del target
 	void RotateTurret(FVector LookAtTarget);
+	void Fire();
 
 
 private:
@@ -30,5 +31,8 @@ private:
 	UStaticMeshComponent* TurretMesh;
 	UPROPERTY(VisibleAnywhere,  BlueprintReadOnly, Category =  "Components", meta = (AllowPrivateAccess = "true") )
 	USceneComponent* ProjectileSpawnPoint;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	TSubclassOf<class AProjectile> ProjectileClass; //ProjectileClass rappresenta la classe di tipo AProjectile con tutte le modifiche della BP
 
 };

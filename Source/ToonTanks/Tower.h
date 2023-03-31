@@ -29,4 +29,11 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category ="Combat")
 	float FireRange = 300.f;
+
+	//Serve perchè è come una sorta di ID con il quale si distinguono i vari timer e possono essere gestiti
+	FTimerHandle FireRateTimerHandle;
+	float FireRate = 2.f;
+	void CheckFireCondition();
+
+	bool InFireRange();
 };
