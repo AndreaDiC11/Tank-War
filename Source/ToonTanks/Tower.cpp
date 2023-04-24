@@ -18,12 +18,18 @@ void ATower::Tick(float DeltaTime)
     
 }
 
+void ATower::HandleDestruction()
+{
+    Super::HandleDestruction();
+    Destroy();
+}
+
 void ATower::BeginPlay()
 {
     Super::BeginPlay();
 
     Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
-
+    //Ogni 2 secondi(FireRate) chiama la funzione CheckFireCondition
     GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &ATower::CheckFireCondition, FireRate, true);
 }
 
