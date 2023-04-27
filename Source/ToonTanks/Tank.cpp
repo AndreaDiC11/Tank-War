@@ -22,7 +22,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-    //Il Tank si muove e si gira
+   
     PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
     PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 
@@ -34,8 +34,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-    //Se c'è il playercontroller(probabilmente è stato impostato in automatico: è la freccia del mouse)
-    //Prendi HitResult della freccia e attiva RotateTurret
+    
     if(TankPlayerController)
     {
         FHitResult HitResult;
@@ -80,7 +79,7 @@ void ATank::Move(float Value)
 
 void ATank::Turn(float Value)
 {
-    //local rotation 16.20 FRotator::ZeroRotator vediamo piu avanti
+
     FRotator DeltaRotation = FRotator::ZeroRotator;
     DeltaRotation.Yaw = Value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
     AddActorLocalRotation(DeltaRotation, true);

@@ -47,9 +47,7 @@ void ABasePawn::HandleDestruction()
 			GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
 		}		
 }
-//Sottrai il punto in cui miri con la posizione della torretta, trasformalo in un FRotator,
-//e modifica la rotazione nel mondo(visto che ToTarget è la posizione nel mondo) e usa l'interpolazione 
-//per gestire la velocita della rotazione
+//Subtract the destination vector and the start vector location and trasform in FRotator
 void ABasePawn::RotateTurret(FVector LookAtTarget)
 {
 	FVector ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();

@@ -28,7 +28,7 @@ AProjectile::AProjectile()
 void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	//quando il proiettile colpisce qualcosa chiama la funzione OnHit
+	//when the projectile hit something call OnHit
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 
 	//Spawn Sound
@@ -56,9 +56,10 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	}
 	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
 	auto DamageTypeClass = UDamageType::StaticClass();
-	// Other Actor è l'attore che viene colpito e deve essere non nullo,
-	// diverso dal proiettile e diverso da l'attore che spara il proiettile
-	if(OtherActor && OtherActor != this && OtherActor != MyOwner) 
+
+	// Other Actor is the actor who is hit and must be non-null and 
+	//it is different from the projectile and different from the actor who fires the projectile
+ 	if(OtherActor && OtherActor != this && OtherActor != MyOwner) 
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
 		if(HitParticles)
