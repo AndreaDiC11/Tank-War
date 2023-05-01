@@ -37,6 +37,6 @@ private:
 
 	void HandleGameStart();
 
-	int32 TargetTowers = 0;
-	int32 GetTargetTowerCount();
+	int32 NumberEnemy = 0;
+	int32 GetNumberEnemy();
 };
