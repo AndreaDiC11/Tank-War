@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Tank.h"
 #include"Tower.h"
+#include "EnemyTanks.h"
 #include "ToonTanksPlayerController.h"
 
 //Destroy Actor when health <= 0
@@ -27,6 +28,11 @@ void AToonTanksGameMode::ActorDied(AActor *DeadActor)
             {
                  GameOver(true);
             }
+    }
+    else if (AEnemyTanks* DestroyedEnemyTanks = Cast<AEnemyTanks>(DeadActor))
+    {
+        DestroyedEnemyTanks->HandleDestruction();
+        GameOver(true);
     }
 }
 
