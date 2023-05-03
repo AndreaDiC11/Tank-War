@@ -19,6 +19,7 @@ void AEnemyTanks::Tick(float DeltaTime)
     }
     else if(InStopRange())
     {
+        RotateTurret(Tank->GetActorLocation());
         StopMove();
     }
     
@@ -44,7 +45,11 @@ void AEnemyTanks::BeginPlay()
 
 void AEnemyTanks::CheckFireCondition()
 {
-    if(InFireRange())
+    if(Tank == nullptr)
+    {
+        return;
+    }
+    if(InFireRange() && Tank->bAlive)
     {
         Fire();
     }
