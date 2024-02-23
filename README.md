@@ -1,6 +1,8 @@
-# ToonTanks
-It is a game I developed with Unreal Engine written in C++ and Blueprint, in which I implemented 3 pawns, the tank used by the player, 
-the enemy turrets and the enemy tank, the goal is to destroy all the enemies without dying, all the pawns can fire projectiles and the 
-enemy tank automatically follows the tank controlled by the player and when it enters in the range of the enemy it is attacked by the 
-projectiles, I have also implemented sound effects and visual effects when the projectile is fired and when it hits, in addition I have 
-created 3 Widgets one for the start of the game and 2 in case of victory or defeat.
+# Tank War
+
+• Developed using Unreal Engine 5 distinct pawns including the player-controlled tank, enemy turrets, and enemy tank, 
+enhancing gameplay diversity  
+• Integrated projectile-based combat mechanics and engineered AI behavior for the enemy tank in C++, enabling autonomous 
+tracking and engagement with the player-controlled tank 
+• Designed and implemented interactive widgets for game initialization, providing clear feedback on game progression 
+• Implemented sound effects and VFX for projectile firing and impact, increasing gameplay immersion 
